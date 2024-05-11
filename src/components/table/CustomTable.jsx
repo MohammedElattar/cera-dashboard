@@ -7,6 +7,7 @@ import {paginationComponent} from "../../utility/helpers/paginationHelper";
 import {getSearchParam} from "../../utility/helpers/searchHelper";
 
 const CustomTable = ({
+                        buttons = [],
                          title,
                          columns,
                          data,
@@ -26,6 +27,7 @@ const CustomTable = ({
                         <Card>
                             <CardHeader className='border-bottom'>
                                 <CardTitle tag='h4'>{title}</CardTitle>
+                                {buttons}
                             </CardHeader>
                             <Row className='mx-0 mt-1 mb-50'>
                                 {pagination && (

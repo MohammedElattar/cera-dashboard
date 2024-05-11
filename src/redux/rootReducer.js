@@ -7,6 +7,7 @@ import chat from '../modules/chat/views/store'
 import categoryReducer from '../modules/category/redux'
 import loading from '../redux/loading'
 import contactUsReducer from '../modules/contactUs/redux'
+import colorsReducer from '../modules/color/redux'
 import {combineReducers} from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     chat,
     categoryReducer,
     contactUsReducer,
+    colorsReducer,
     loading
 })
 

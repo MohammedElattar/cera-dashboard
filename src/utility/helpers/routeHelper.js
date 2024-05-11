@@ -29,3 +29,7 @@ export const updateParams = (params) => {
     const newUrl = `${window.location.pathname}?${params}`;
     window.history.pushState({ path: newUrl }, '', newUrl);
 }
+
+export const goBack = () => {
+    history.back()
+}

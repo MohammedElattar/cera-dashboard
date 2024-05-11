@@ -12,22 +12,27 @@ export const formikInstance = (props) => {
 }
 
 export const formikErrorHandler = (response, formikObject) => {
+
+    if (response.code !== HttpResponse.VALIDATION_ERRORS) {
+        return;
+    }
+
+    console.log('iam here');
+
     const {initialValues, setErrors} = formikObject;
 
     const errorKeys = Object.keys(initialValues);
 
-    if (response.code === HttpResponse.VALIDATION_ERRORS) {
-        const tmpErrors = {}
+    const tmpErrors = {}
 
-        errorKeys.forEach((errorKey) => {
-            if (response.data[errorKey] !== undefined) {
-                tmpErrors[errorKey] = response.data[errorKey]
-            }
-        })
-
-        if (!isObjEmpty(tmpErrors)) {
-            setErrors(tmpErrors)
+    errorKeys.forEach((errorKey) => {
+        if (response.data[errorKey] !== undefined) {
+            tmpErrors[errorKey] = response.data[errorKey]
         }
+    })
+
+    if (!isObjEmpty(tmpErrors)) {
+        setErrors(tmpErrors)
     }
 
     const responseErrorKeys = Object.keys(response.data);
@@ -47,6 +52,7 @@ export const buildFormikParams = (formik) => {
         setSubmitting: formik.setSubmitting
     }
 }
+
 
 formikInstance.propTypes = {
     initialValues: PropTypes.object,

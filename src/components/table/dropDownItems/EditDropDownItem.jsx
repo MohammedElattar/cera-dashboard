@@ -1,11 +1,12 @@
 import { Button} from "reactstrap";
 import PropTypes from 'prop-types'
 import { Edit } from "react-feather";
+import {Link} from "react-router-dom";
 
-const EditDropDownItem = ({ onClick }) => {
-    return <Button size='sm' color='transparent' className='btn btn-icon' onClick={onClick}>
+const EditDropDownItem = ({ onClick, href}) => {
+    return <Link size='sm' to={href} color='transparent' className='btn btn-icon' onClick={onClick}>
         <Edit className='font-medium-2' />
-    </Button>
+    </Link>
 }
 
 EditDropDownItem.propTypes = {

@@ -13,7 +13,7 @@ import PublicRoute from "@components/routes/PublicRoute"
 import {isObjEmpty} from "@utils"
 import {authRoutes} from "../../modules/auth/routes"
 import {HOME_ROUTE} from "../../constants/routes";
-// import CategoryRoutes from '../../modules/category/routes';
+import colors from '../../modules/color/routes'
 import contactUs from "../../modules/contactUs/routes";
 import {Navigate} from "react-router-dom";
 
@@ -46,6 +46,7 @@ const Routes = [
     // ...CategoryRoutes,
     ...authRoutes,
     ...contactUs,
+    ...colors,
     {
         path: '*',
         element: <Error/>,

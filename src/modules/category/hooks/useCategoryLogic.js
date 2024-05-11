@@ -38,7 +38,7 @@ const useCategoryLogic = () => {
             .then(() => {
                 getAllCategoriesLogic()
             })
-            .catch((error) => formikErrorHandler(error.response.data, formikObject))
+            .catch((error) => formikErrorHandler(error.response, formikObject))
             .finally(() => setSubmitting(false))
     }
 

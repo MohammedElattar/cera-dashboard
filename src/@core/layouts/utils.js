@@ -25,6 +25,8 @@ export const resolveHorizontalNavMenuItemComponent = (item) => {
 /**
  * Check if nav-link is active
  * @param {Object} link nav-link object
+ * @param currentURL
+ * @param routerProps
  */
 export const isNavLinkActive = (link, currentURL, routerProps) => {
   return (
@@ -42,7 +44,7 @@ export const isNavLinkActive = (link, currentURL, routerProps) => {
  * in one of its children
  *
  * @param item
- * @param activeItem
+ * @param currentUrl
  */
 export const hasActiveChild = (item, currentUrl) => {
   const { children } = item
@@ -90,28 +92,12 @@ export const removeChildren = (children, openGroup, currentActiveGroup) => {
   })
 }
 
-const checkForVisibleChild = (arr, ability) => {
-  return arr.some((i) => {
-    if (i.children) {
-      return checkForVisibleChild(i.children, ability)
-    } else {
-      return ability.can(i.action, i.resource)
-    }
-  })
-}
+// const checkForVisibleChild = (arr, ability) => {
+//   return true;
+// }
 
-export const canViewMenuGroup = (item) => {
-  const ability = useContext(AbilityContext)
-  // ! This same logic is used in canViewHorizontalNavMenuGroup and canViewHorizontalNavMenuHeaderGroup. So make sure to update logic in them as well
-  const hasAnyVisibleChild =
-    item.children && checkForVisibleChild(item.children, ability)
-
-  // ** If resource and action is defined in item => Return based on children visibility (Hide group if no child is visible)
-  // ** Else check for ability using provided resource and action along with checking if has any visible child
-  if (!(item.action && item.resource)) {
-    return hasAnyVisibleChild
-  }
-  return ability.can(item.action, item.resource) && hasAnyVisibleChild
+export const canViewMenuGroup = () => {
+  return true;
 }
 
 export const canViewMenuItem = (item) => {
