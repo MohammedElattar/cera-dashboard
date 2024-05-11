@@ -24,3 +24,8 @@ export function getUniqueParams() {
 
     return uniqueUrlParams;
 }
+
+export const updateParams = (params) => {
+    const newUrl = `${window.location.pathname}?${params}`;
+    window.history.pushState({ path: newUrl }, '', newUrl);
+}

@@ -1,6 +1,6 @@
 import { Home, MessageSquare} from "react-feather"
-import categories from "../../modules/category/routes/sidebar"
-
+// import categories from "../../modules/category/routes/sidebar"
+import contactUs from '../../modules/contactUs/routes/sidebar'
 export default [
   {
     id: "home",
@@ -14,5 +14,6 @@ export default [
     icon: <MessageSquare size={20} />,
     navLink: '/apps/chat'
   },
-  ...categories
+  // ...categories,
+    ...contactUs
 ]

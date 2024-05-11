@@ -3,7 +3,7 @@
 //Template config options
 const themeConfig = {
   app: {
-    appName: 'Mohamed Attar',
+    appName: 'Cera',
     appLogoImage: require('../assets/images/logo/logo.svg').default
   },
   layout: {

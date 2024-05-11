@@ -1,26 +1,22 @@
-import React, { Fragment, useState } from "react";
-import { Button, Card, CardHeader, CardTitle, Col, Input, Label, Row} from "reactstrap";
+import React, {Fragment, useState} from "react";
+import {Button, Card, CardHeader, CardTitle, Col, Input, InputGroup, Label, Row} from "reactstrap";
 import '../../@core/scss/react/libs/tables/react-dataTable-component.scss'
-import { ChevronDown, Plus} from "react-feather";
+import {ChevronDown, Search} from "react-feather";
 import DataTable from 'react-data-table-component';
 import {paginationComponent} from "../../utility/helpers/paginationHelper";
+import {getSearchParam} from "../../utility/helpers/searchHelper";
 
 const CustomTable = ({
-     title,
-     columns, 
-     data,
-     paginationObject,
-     pagination = false, 
-     searchable = true,
-     searchedValues,
-     handleOpen,
-     entriesPerPageOptions = [5, 10, 25, 50, 75, 100] 
-}) => {
-    const [searchValue, setSearchValue] = useState(searchedValues);
-
-    const handleSearch = e => {
-        setSearchValue(e.target.value);
-    }
+                         title,
+                         columns,
+                         data,
+                         paginationObject,
+                         pagination = false,
+                         searchable = true,
+                         handleSearch,
+                         entriesPerPageOptions = [5, 10, 25, 50, 75, 100]
+                     }) => {
+    const [searchValue, setSearchValue] = useState(getSearchParam());
 
     return (
         <Fragment>
@@ -30,12 +26,6 @@ const CustomTable = ({
                         <Card>
                             <CardHeader className='border-bottom'>
                                 <CardTitle tag='h4'>{title}</CardTitle>
-                                <div className='d-flex mt-md-0 mt-1'>
-                                    <Button className='ms-2' color='primary' onClick={() => handleOpen(true)}>
-                                        <Plus size={15} />
-                                        <span className='align-middle ms-50'>Add Record</span>
-                                    </Button>
-                                </div>
                             </CardHeader>
                             <Row className='mx-0 mt-1 mb-50'>
                                 {pagination && (
@@ -58,18 +48,29 @@ const CustomTable = ({
                                     </Col>
                                 )}
                                 {searchable && (
-                                    <Col className='d-flex align-items-center justify-content-sm-end mt-sm-0 mt-1' sm='6'>
-                                        <Label className='me-1' for='search-input'>
-                                            Search
-                                        </Label>
-                                        <Input
-                                            className='dataTable-filter'
-                                            type='text'
-                                            bsSize='sm'
-                                            id='search-input'
-                                            value={searchValue}
-                                            onChange={handleSearch}
-                                        />
+                                    <Col className='d-flex align-items-center justify-content-sm-end mt-sm-0 mt-1'
+                                         sm='6'>
+                                        <InputGroup size="sm" style={{ width: 'auto' }}>
+                                            <span className="input-group-text">
+                                                <Search onClick={() => handleSearch(searchValue)}/>
+                                            </span>
+                                            <Input
+                                                className='dataTable-filter'
+                                                type='text'
+                                                id='search-input'
+                                                value={searchValue}
+                                                onChange={(event) => {
+                                                    const value = event.target.value;
+
+                                                    if (!value && !!searchValue) {
+                                                        handleSearch('')
+                                                    }
+
+                                                    setSearchValue(value);
+                                                }}
+                                                placeholder="Search..."
+                                            />
+                                        </InputGroup>
                                     </Col>
                                 )}
                             </Row>
@@ -82,7 +83,7 @@ const CustomTable = ({
                                     paginationServer
                                     className='react-dataTable'
                                     columns={columns}
-                                    sortIcon={<ChevronDown size={10} />}
+                                    sortIcon={<ChevronDown size={10}/>}
                                     data={data}
                                 />
                             </div>
@@ -90,7 +91,7 @@ const CustomTable = ({
                     </Fragment>
                 </Col>
             </Row>
-        </Fragment >
+        </Fragment>
     );
 }
 

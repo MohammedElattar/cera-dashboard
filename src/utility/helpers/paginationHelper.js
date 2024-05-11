@@ -1,7 +1,7 @@
 import { lazy } from "react"
 
 const Pagination = lazy(() => import('../../components/table/PaginationComponent'))
-import { getUniqueParams } from "./routeHelper";
+import {getUniqueParams, updateParams} from "./routeHelper";
 
 export const paginationComponent = (args) => {
     return <Pagination {...args} />
@@ -48,11 +48,13 @@ export function getPreviousPageNumber() {
 
 export function updatePaginationParams(page, perPage) {
     const updatedParams = new URLSearchParams(window.location.search);
+
     updatedParams.set('page', getValidPageNumber(page).toString());
     updatedParams.set('per_page', getValidPerPage(perPage).toString());
-    const newUrl = `${window.location.pathname}?${updatedParams.toString()}`;
-    window.history.pushState({ path: newUrl }, '', newUrl);
+
+    updateParams(updatedParams.toString())
 }
+
 
 
 export function generatePaginationParams(page, perPage) {
