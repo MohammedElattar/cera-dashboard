@@ -18,6 +18,7 @@ export const replaceDefaultRules = (defaultRules, newRules) => {
 
 export const emailRules = (newRules) => {
     const defaultRules = {
+        string: 'string',
         required: 'required',
         email: 'email',
         trim: 'trim'
@@ -28,12 +29,17 @@ export const emailRules = (newRules) => {
 
 export const stringRules = (newRules) => {
     const defaultRules = {
+        string: 'string',
         required: 'required',
         max: 'max:255',
         trim: 'trim'
     }
 
     return replaceDefaultRules(defaultRules, newRules)
+}
+
+export const longTextRules = (newRules) => {
+    return stringRules({...{max: null}, ...newRules})
 }
 
 export const imageRules = (newRules) => {
@@ -47,9 +53,29 @@ export const imageRules = (newRules) => {
 
 export const passwordRules = (newRules) => {
     const defaultRules = {
+        string: 'string',
         required: 'required',
         min: 'min:8',
         trim: 'trim'
+    }
+
+    return replaceDefaultRules(defaultRules, newRules)
+}
+
+export const integerRules = (newRules) => {
+    const defaultRules = {
+        number: 'number',
+        required: 'required',
+        min: 'min:1'
+    }
+
+    return replaceDefaultRules(defaultRules, newRules)
+}
+
+export const arrayRules = (newRules) => {
+    const defaultRules = {
+        array: 'array',
+        required: 'required'
     }
 
     return replaceDefaultRules(defaultRules, newRules)
@@ -60,7 +86,7 @@ const generateSchema = (allRulesObject) => {
 
     Object.entries(allRulesObject).forEach(([fieldName, fieldRules]) => {
         if (fieldRules) {
-            let fieldSchema = Yup.string();
+            let fieldSchema = Yup
 
             fieldRules.forEach((rule) => {
                 const [ruleName, ...params] = rule.split(':');

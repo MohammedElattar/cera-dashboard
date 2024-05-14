@@ -14,6 +14,7 @@ import {isObjEmpty} from "@utils"
 import {authRoutes} from "../../modules/auth/routes"
 import {HOME_ROUTE} from "../../constants/routes";
 import colors from '../../modules/color/routes'
+import products from '../../modules/product/routes'
 import contactUs from "../../modules/contactUs/routes";
 import {Navigate} from "react-router-dom";
 
@@ -47,6 +48,7 @@ const Routes = [
     ...authRoutes,
     ...contactUs,
     ...colors,
+    ...products,
     {
         path: '*',
         element: <Error/>,

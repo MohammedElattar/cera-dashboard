@@ -11,7 +11,7 @@ const generateActions = (row, props) => {
             handleOpen(false)
             setOpen(true)
         }}/>,
-        <DeleteDropDownItem key={1} handleDelete={() => handleDelete(row.id)}/>
+        <DeleteDropDownItem key={1} handleDelete={() => handleDelete(row.id)} key={1}/>
     ]
 
     return <TableActions row={row} actions={actions}/>

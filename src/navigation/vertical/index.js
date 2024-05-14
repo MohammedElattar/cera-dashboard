@@ -1,5 +1,6 @@
 import { Home, MessageSquare} from "react-feather"
 import colors from '../../modules/color/routes/sidebar'
+import products from '../../modules/product/routes/sidebar'
 import contactUs from '../../modules/contactUs/routes/sidebar'
 export default [
   {
@@ -15,5 +16,6 @@ export default [
     navLink: '/apps/chat'
   },
     ...contactUs,
-    ...colors
+    ...colors,
+    ...products
 ]
