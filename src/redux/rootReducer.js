@@ -10,6 +10,8 @@ import contactUsReducer from '../modules/contactUs/redux'
 import colorsReducer from '../modules/color/redux'
 import productReducer from '../modules/product/redux'
 import selectMenuReducer from './selectMenu'
+import ordersReducer from '../modules/order/redux'
+
 import {combineReducers} from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
@@ -23,6 +25,7 @@ const rootReducer = combineReducers({
     colorsReducer,
     productReducer,
     selectMenuReducer,
+    ordersReducer,
     loading
 })
 

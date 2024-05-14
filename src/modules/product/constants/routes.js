@@ -1,7 +1,7 @@
-const colorRoutes = {
+const productRoutes = {
     TABLE: '/products',
     ADD: '/products/create',
     EDIT: '/products/:id/edit'
 }
 
-export default colorRoutes;
+export default productRoutes;

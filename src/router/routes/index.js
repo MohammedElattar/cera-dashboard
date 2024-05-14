@@ -16,6 +16,7 @@ import {HOME_ROUTE} from "../../constants/routes";
 import colors from '../../modules/color/routes'
 import products from '../../modules/product/routes'
 import contactUs from "../../modules/contactUs/routes";
+import orders from "../../modules/order/routes";
 import {Navigate} from "react-router-dom";
 
 const getLayout = {
@@ -49,6 +50,7 @@ const Routes = [
     ...contactUs,
     ...colors,
     ...products,
+    ...orders,
     {
         path: '*',
         element: <Error/>,
