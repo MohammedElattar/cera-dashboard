@@ -27,7 +27,7 @@ const getColumns = () => {
             sortable: false,
             name: 'Color',
             minwidth: '250px',
-            cell: row => <ColorColumn hexCode={row?.color?.code} title={row?.color?.code}/>
+            cell: row => <ColorColumn hexCode={row?.color?.code} title={row?.color?.name}/>
         },
         {
             sortable: true,
