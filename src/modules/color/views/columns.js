@@ -1,6 +1,7 @@
 import DeleteDropDownItem from "../../../components/table/dropDownItems/DeleteDropDownItem";
 import TableActions from "../../../components/table/dropDownItems/TableActions";
 import EditDropDownItem from "../../../components/table/dropDownItems/EditDropDownItem";
+import ColorColumn from "../../../components/form/ColorColumn";
 
 const generateActions = (row, props) => {
     const {handleDelete, routeParser} = props;
@@ -24,24 +25,7 @@ const getColumns = (props) => {
             sortable: true,
             name: 'Hex Code',
             minwidth: '250px',
-            cell: row => <div
-                style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    width: "100%"
-                }}
-            >
-          <span
-              style={{
-                  background: row.code,
-                  color: "white",
-                  padding: ".5rem",
-                  borderRadius: ".2rem"
-              }}
-          >
-            {row.code}
-          </span>
-            </div>
+            cell: row => <ColorColumn hexCode={row.code} title={row.code}/>
         },
         {
             name: 'Actions',

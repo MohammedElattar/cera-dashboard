@@ -1,4 +1,5 @@
 import Avatar from "../../../@core/components/avatar";
+import ColorColumn from "../../../components/form/ColorColumn";
 
 const getColumns = () => {
     return [
@@ -23,6 +24,18 @@ const getColumns = () => {
             }
         },
         {
+            sortable: false,
+            name: 'Color',
+            minwidth: '250px',
+            cell: row => <ColorColumn hexCode={row?.color?.code} title={row?.color?.code}/>
+        },
+        {
+            sortable: true,
+            name: 'Size',
+            minwidth: '250px',
+            selector: row => row.size
+        },
+        {
             sortable: true,
             name: 'Quantity',
             minwidth: '250px',
@@ -34,6 +47,7 @@ const getColumns = () => {
             minwidth: '250px',
             selector: row => row.product.price
         },
+
         {
             sortable: true,
             name: 'Sub Total',
