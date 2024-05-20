@@ -12,5 +12,5 @@ code {
     monospace;
 }
 .css-b62m3t-container ,.react-select{
-  z-index:3 !important;
+  z-index:100000 !important;
 }
