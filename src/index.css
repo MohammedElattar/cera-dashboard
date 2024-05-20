@@ -12,5 +12,5 @@ code {
     monospace;
 }
 .css-b62m3t-container{
-  z-index:3;
+  z-index:3 !important;
 }
