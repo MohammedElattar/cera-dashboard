@@ -36,6 +36,7 @@ const CustomSelectComponent = (props) => {
     console.log('default value', value)
 
     return <Select
+        style={{zIndex: 2}}
         className='react-select'
         classNamePrefix='select'
         isClearable={true}
